@@ -1,13 +1,28 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 
 export default function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <View style={styles.container}>
       <Text style={styles.formTitle}>Login no Sistema</Text>
       <StatusBar style="auto" />
-      <TextInput style={styles.formInput} />
-      <TextInput style={styles.formInput} />
+      <TextInput
+        style={styles.formInput}
+        placeholder="Usuário"
+        onChangeText={setUsername}
+        value={username}
+      />
+      <TextInput
+        style={styles.formInput}
+        placeholder="Senha"
+        onChangeText={setPassword}
+        value={password}
+        secureTextEntry={true}
+      />
       <Pressable style={styles.formButton}>
           <Text style={styles.textButton}> Logar </Text>
       </Pressable>
@@ -19,9 +34,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent', // torna o fundo transparente
     alignItems: 'center',
     justifyContent: 'center',
+    background: 'linear-gradient(to bottom, #fff, #FF69B4, #fff)', // gradiente linear de branco para rosa para branco
   },
   formTitle: {
     fontSize: 36,
